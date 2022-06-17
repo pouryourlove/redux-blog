@@ -1,11 +1,7 @@
-import jasonPlaceholder from "../apis/jasonPlaceholder";
+import jsonPlaceholder from "../apis/jsonPlaceholder";
 
-export const fetchPost = async () => {
-  //BAD APPROACH!
-  const response = await jasonPlaceholder.get("/posts");
+export const fetchPost = () => async (dispatch) => {
+  const response = await jsonPlaceholder.get("/posts");
 
-  return {
-    type: "FETCH_POSTS",
-    payload: response,
-  };
+  dispatch({ type: "FETCH_POST", payload: response });
 };
